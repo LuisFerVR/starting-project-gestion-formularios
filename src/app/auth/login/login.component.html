@@ -14,8 +14,11 @@
 
     <button class="button">Login</button>
   </div>
-  
-  @if(email.touched && password.touched && form.form.invalid){
-    <p>Formulario invalido, llene todos los campos</p> 
+
+  @if(email.touched && email.dirty && email.invalid){
+    <p class="control-error">correo invalido, ingrese un correo existente</p> 
+  }
+  @if(password.touched && password.dirty && password.invalid){
+    <p class="control-error">contraseña invalida, debe tener al menos 6 caracteres</p> 
   }
 </form>
