@@ -1,17 +1,23 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <h2>Login</h2>
 
   <div class="control-row">
     <div class="control no-margin">
       <label for="email">Email</label>
-      <input id="email" type="email" />
+      <input id="email" type="email" [formControl]="form.controls.email"/>
     </div>
 
     <div class="control no-margin">
       <label for="password">Password</label>
-      <input id="password" type="password" />
+      <input id="password" type="password" formControlName="password"/>
     </div>
 
     <button class="button">Login</button>
   </div>
+  @if(emailIsInvalid){
+    <p class="control-error">Favor de ingresar un correo existente</p>
+  }
+  @if(passwordIsInvalid){
+    <p class="control-error">Favor de ingresar un contraseña mínimo de 6 caracteres y que contenga un signo de interrogación cerrado</p>
+  }
 </form>
